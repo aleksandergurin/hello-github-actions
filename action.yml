@@ -11,6 +11,7 @@ inputs:
 runs:
   using: "docker"
   image: "Dockerfile"
+  options: --target test
 
 branding:
   icon: "mic"
