@@ -6,6 +6,12 @@ jobs:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+
       - name: Build docker
-        run: docker build --target test -f Dockerfile . 
+        run: docker build -t test:${GITHUB_REF##*/} -f Dockerfile . 
+
+      - name: Run tests
+        run: docker run -it test:${GITHUB_REF##*/} /entrypoint.sh
+
