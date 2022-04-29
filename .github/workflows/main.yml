@@ -13,5 +13,5 @@ jobs:
         run: docker build -t test:${GITHUB_REF##*/} -f Dockerfile . 
 
       - name: Run tests
-        run: docker run -it test:${GITHUB_REF##*/} /entrypoint.sh
+        run: docker run test:${GITHUB_REF##*/} /entrypoint.sh
 
