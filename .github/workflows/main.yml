@@ -27,6 +27,9 @@ jobs:
     steps:
       # Unfortunately we can not share newly built docker images between jobs,
       # so we have to build (or pull) image again.
+      - name: Checkout
+        uses: actions/checkout@v1
+
       - name: Build docker
         run: docker build -t test-${GITHUB_REF_NAME} -f Dockerfile .
 
